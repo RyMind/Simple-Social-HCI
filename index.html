@@ -54,7 +54,14 @@
           <%= questions[curQ] %>
         </div>
         <div id="quizResponses">
-          <%=
+          <div id="responseQuestion">
+            <%= responses[curR][0] %>
+          </div>
+          <div id="responseItems">
+            <% for (item in responses[curR][1]) { %>
+              <div class="response" data-value="<%= item %>"><%= responses[curR][1][item] %></div>
+            <% } %>
+          </div>
         </div>
         <div id="nextQ" class="nextQ">Next Question -></div>
       </div>

@@ -86,7 +86,6 @@ $(function() {
       
       Parse.User.logIn(username, password, {
         success: function(user) {
-          // new ManageTodosView();
           // TODO: (1) Handle log on success
           new WAYDAppView;
           self.undelegateEvents();
@@ -109,8 +108,7 @@ $(function() {
       var password = this.$("#signupPassword").val();
       Parse.User.signUp(username, password, { ACL: new Parse.ACL(), WAYDCats : [], active : null }, {
         success: function(user) {
-          // new QuizView;
-          new WAYDAppView;
+          new QuizView;
           self.undelegateEvents();
           //delete self;
         },
@@ -131,14 +129,17 @@ $(function() {
   });    
 
   var QuizView = Parse.View.extend({
-    el: $("#quiz"),
+    el: $("#wayd"),
     events: {
       "click .nextQ" : "nextQ",
       "click .response" : "selectResp"
     }, 
     initialize : function() {
+      console.log("Init Quiz");
       var self = this;
       this.curQ = 0;
+      this.curR = 0;
+      this.choices = [];
       this.questions = [
         "Telephoning in public.", 
         "Participating in small groups."
@@ -152,18 +153,32 @@ $(function() {
       this.render();
     },
     nextQ : function(e) {
+      if (this.curR == this.responseSets.length-1) {
+        this.curQ += 1;
+        this.curR = 0;
+        this.render();
 
+      } else if (this.curQ == this.questions.length-1) { 
+        this.undelegateEvents();
+        new WAYDAppView;
+
+      } else {
+        this.curR += 1;
+        this.render();
+
+      }
     },
     selectResp : function(e) {
-
+      console.log(getAttribute)
     },
     render : function() {
       if (Parse.User.current()) {
         var user = Parse.User.current();
-        this.$el.html(_.template($("#QUIZTemplate").html())({questions : this.questions, curQ : this.curQ}));
+        this.$el.html(_.template($("#QUIZTemplate").html())({questions : this.questions, curQ : this.curQ, curR : this.curR, responses : this.responseSets}));
         // $("#categories").html(innards);
         this.delegateEvents();                
       } else {
+        self.undelegateEvents();
         new LogInView();
       }     
     }
@@ -239,10 +254,12 @@ $(function() {
       Parse.User.logOut();
       new LogInView();
       this.undelegateEvents();
+      $("#hayd").html("");
       delete this;
+
     }
   }); 
 
-  var app = new WAYDAppView;
+var app = new WAYDAppView;
   //var app = new QuizView;
 });
