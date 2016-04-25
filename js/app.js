@@ -141,8 +141,31 @@ $(function() {
       this.curR = 0;
       this.choices = [];
       this.questions = [
-        "Telephoning in public.", 
-        "Participating in small groups."
+	"Telephoning in public.", 
+	"Participating in small groups.”,
+	“Eating in public places.”,
+	“Drinking with others in public places.”,
+	“Talking to people in authority.”,
+	“Acting, performing or giving a talk in front of an audience.”,
+	“Going to a party.”,
+	“Working while being observed.”,
+	“Writing while being observed.”,
+	“Calling someone you don’t know very well.”,
+	“Talking with people you don’t know very well.”,
+	“Meeting strangers.”,
+	“Urinating in a public bathroom.”,
+	“Entering a room when others are already seated.”,
+	“Being the center of attention.”,
+	“Speaking up at a meeting.”,
+	“Taking a test.”,
+	“Expressing a disagreement or disapproval to people you don’t know very well.”,
+	“Looking at people you don’t know very well in the eyes.”,
+	“Giving a report to a group.”,
+	“Trying to pick up someone.”,
+	“Returning goods to a store.”,
+	“Giving a party.”,
+	“Resisting a high pressure salesperson.”
+
       ];
       this.responseSets = [
         ["How anxious or fearful do you feel in this situation?",["None","Mild","Moderate","Severe"]], 
