@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta characteristics -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Social</title>
+
+    <!-- styling/etc -->
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
+
+    <!-- dependencies -->
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+    <script src="./underscore.js"></script>
+  </head>
+  <body>
+		<div id="wayd" class="wayd">
+		</div>
+
+		<div id="hayd" class="hayd">
+
+		</div>
+
+    <!-- Templates -->
+		<script type="text/template" id="loginTemplate">
+      <header id="header"></header>
+    	<div class="login">
+      	<form class="loginForm">
+        	<h2>Log In</h2>
+        	<div class="error" style="display:none"></div>
+        	<input type="text" id="loginUsername" placeholder="Username" />
+        	<input type="password" id="loginPassword" placeholder="Password" />
+        	<button>Log In</button>
+      	</form>
+      	<form class="signupForm">
+          <h2>Sign Up</h2>
+          <div class="error" style="display:none"></div>
+          <input type="text" id="signupUsername" placeholder="Username" />
+          <input type="password" id="signupPassword" placeholder="Create a Password" />
+          <button>Sign Up</button>
+       	</form>
+    	</div>
+    </script>
+
+    <script type="text/template" id="QUIZTemplate">
+    </script>
+    <script type="text/template" id="WAYDTemplate">
+      <div id="userInfo">
+        Signed in as <%= Parse.User.current().escape("username") %> (<a href="#" class="logOut">Log out</a>)
+      </div><br>
+      <p> What are you doing? </p>
+      <div id="categories">
+      </div>
+      <br>
+			<div id="add">
+				<label> Add category: <input id="addWAYD" type="text" placeholder="Something you do..."></label> 
+			</div>
+    </script>
+
+    <script type="text/template" id="HAYDTemplate">
+      <p> How are you doing? </p>
+    	<label>Mood:<input id="rating" class="rating" type="number"></label><br>
+		  <label>Blurb:<br><textarea id="blurb" class="blurb"></textarea></label><br>
+		  <button type="submit" class="submit">Submit</button>
+			<br>
+		</script>
+
+		<!-- app script -->
+    <script src="./js/app.js"></script> 
+	</body>
+</html>
