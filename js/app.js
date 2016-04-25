@@ -1,7 +1,7 @@
 $(function() {
   Parse.$ = jQuery;
   // Initialize Parse with your Parse application javascript keys
-  Parse.initialize("hkg8MJlP5H8kpizaL2z2XSvOhQTzl7Bq4lGtIdWl", "Nvu5G999rMMacSvRVd7QSfhdrK0GsBGhIXkHra86");
+  Parse.initialize("hg5QsPk8Lmrc3jc1wzEbCWYt2BQS0IubRi0KgnF3", "7L7PkSedRzQzAWlq5MoyoE4OeDz33K9qeDGw9fGo");
 
   var WAYD = Parse.Object.extend("WAYD", {
     initialize: function() {
@@ -66,6 +66,7 @@ $(function() {
 			}, error : function(obj, error) {} });
 		}
   });
+
 	var LogInView = Parse.View.extend({
     events: {
       "submit form.loginForm": "logIn",
@@ -108,8 +109,7 @@ $(function() {
       var password = this.$("#signupPassword").val();
       Parse.User.signUp(username, password, { ACL: new Parse.ACL(), WAYDCats : [], active : null }, {
         success: function(user) {
-          // new ManageTodosView();
-          // TODO: (1) Handle SignUp success
+          // new QuizView;
           new WAYDAppView;
           self.undelegateEvents();
           //delete self;
@@ -130,6 +130,44 @@ $(function() {
     }
   });    
 
+  var QuizView = Parse.View.extend({
+    el: $("#quiz"),
+    events: {
+      "click .nextQ" : "nextQ",
+      "click .response" : "selectResp"
+    }, 
+    initialize : function() {
+      var self = this;
+      this.curQ = 0;
+      this.questions = [
+        "Telephoning in public.", 
+        "Participating in small groups."
+      ];
+      this.responseSets = [
+        ["How anxious or fearful do you feel in this situation?",["None","Mild","Moderate","Severe"]], 
+        ["How often do you avoid this situation?",["Never","Occasionally","Often","Usually"]]
+      ];
+      _.bindAll(this,'render','nextQ','selectResp');
+
+      this.render();
+    },
+    nextQ : function(e) {
+
+    },
+    selectResp : function(e) {
+
+    },
+    render : function() {
+      if (Parse.User.current()) {
+        var user = Parse.User.current();
+        this.$el.html(_.template($("#QUIZTemplate").html())({questions : this.questions, curQ : this.curQ}));
+        // $("#categories").html(innards);
+        this.delegateEvents();                
+      } else {
+        new LogInView();
+      }     
+    }
+  });
   var WAYDAppView = Parse.View.extend({
     el: $("#wayd"),
     events: {
@@ -204,6 +242,7 @@ $(function() {
       delete this;
     }
   }); 
-  var app = new WAYDAppView;
 
+  var app = new WAYDAppView;
+  //var app = new QuizView;
 });
