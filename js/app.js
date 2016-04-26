@@ -11,9 +11,16 @@ $(function() {
     initialize: function() {
     }
   });
+
+  var QUIZ = Parse.Object.extend("QUIZ", {
+    initialize: function() {   
+    }
+  });
+
   var WAYDList = Parse.Collection.extend({
     model : WAYD
   });
+
   var wayds;
 	$("#wayd" ).on( "click", ".item", function() {
 		$(".wayd .item.selected").removeClass("selected");
@@ -176,23 +183,36 @@ $(function() {
       this.render();
     },
     nextQ : function(e) {
-      if (this.curR == this.responseSets.length-1) {
-        this.curQ += 1;
-        this.curR = 0;
-        this.render();
+      if ($(".response.selected").length == 1) {
+        if (this.curR == this.responseSets.length-1) {
+          this.curQ += 1;
+          this.curR = 0;
+          this.choices.push(parseInt($(".response.selected")[0].getAttribute("data-value")));
+          this.render();
 
-      } else if (this.curQ == this.questions.length-1) { 
-        this.undelegateEvents();
-        new WAYDAppView;
+        } else if (this.curQ == this.questions.length-1) { 
+          this.undelegateEvents();
+          var obj = new QUIZ();
+          obj.set("user", Parse.User.current());
+          obj.set("ACL", new Parse.ACL(Parse.User.current()));
+          obj.set("submit", Date.now());
+          obj.set("choices", this.choices);
+          obj.set("result", this.choices.reduce(function(f, s) { return f + s; }, 0));
+          obj.save(null,{ success : function(obj) {
+            new WAYDAppView;
+          }});
 
+        } else {
+          this.curR += 1;
+          this.render();
+        }
       } else {
-        this.curR += 1;
-        this.render();
-
+        console.log("none selected");
       }
     },
     selectResp : function(e) {
-      console.log(getAttribute)
+      $(".response.selected").removeClass("selected");
+      $(e.target).addClass("selected");
     },
     render : function() {
       if (Parse.User.current()) {
