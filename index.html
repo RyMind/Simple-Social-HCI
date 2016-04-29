@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,8 +9,7 @@
 
     <!-- styling/etc -->
     <link rel="stylesheet" type="text/css" href="./css/app.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/bootstrap.min.css" >
 
     <!-- dependencies -->
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -31,30 +28,61 @@
 
     <!-- Templates -->
 		<script type="text/template" id="loginTemplate">
-			<div class="row" id="frontPageContent">
-				<img src="./img/guy-waving.jpg" class="col-md-2" id="leftImage">
-				<div class="login col-md-4 panel panel-default">
-					<div class="panel-body">
-						<header id="header" class="row"><h1>Simple Social<br><small>Sign up for cool updates</small></h1></header>
-						<form class="loginForm row">
-							<h2>Log In</h2>
-							<div class="error" style="display:none"></div>
-							<input type="text" id="loginUsername" placeholder="Username" /><br>
-							<input type="password" id="loginPassword" placeholder="Password" /><br>
-							<button>Log In</button>
-						</form>
-						<p class="row">----- OR -----</p>
-						<form class="signupForm row">
-							<h2>Sign Up</h2>
-							<div class="error" style="display:none"></div>
-							<input type="text" id="signupUsername" placeholder="Username" /><br>
-							<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
-							<button>Sign Up</button>
-						</form>
+			<header>Simple Social</header>
+			<div class="row" id="loginRow">
+				<div class="col-md-1"></div>
+				<div class="col-md-5" id="quoteBlock">
+					<img id="leftQuote" src="img/quote-left.png" height="100px">
+					<h1>If it scares you, it might be a good thing to try</h1>
+					<img id="rightQuote" src="img/quote-right.png" height="100px">
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<!-- panel for the login/signup content -->
+					<div id="loginContent">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form class="loginForm">
+								<!-- should put error somewhere else... I'll leave it here for now -->
+									<img src="img/user_icon.png" height="120px"><br>
+									<div class="error" style="display:none"></div><br>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="text" id="loginUsername" class="form-control form-control-purple input-lg" placeholder="Username">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">									
+											<input type="password" id="loginPassword" class="form-control form-control-purple input-lg" placeholder="Password">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<button class="btn btn-block input-lg">Log In</button>
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+								</form>
+								<form class="signupForm" style="display:none;">
+									<h2>Sign Up</h2>
+									<div class="error" style="display:none"></div>
+									<input type="text" id="signupUsername" placeholder="Username" /><br>
+									<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
+									<button>Sign Up</button>
+								</form>
+							</div>				
+						</div>
+						<h2 id="signupText">Don't have an account? <a id="signupLink" href="javascript:;">Sign up</a></h2>
 					</div>
 				</div>
-				<img id="rightImage" class="col-md-6" src="./img/happy-man.png" height="464px">			
+				<div class="col-md-1"></div>
 			</div>
+			
 		</script>
 
     <script type="text/template" id="QUIZTemplate">
@@ -98,6 +126,8 @@
 		</script>
 
 		<!-- app script -->
-    <script src="./js/app.js"></script> 
+    <script src="./js/app.js"></script>
+		<!-- bootstrap's script -->
+		<script src="js/bootstrap.min.js"></script>		
 	</body>
 </html>
