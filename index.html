@@ -15,6 +15,8 @@
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>		
     <script src="./js/underscore.js"></script>
+		<!-- for eyes -->
+		<script type="text/javascript" src="js/jqeye.min.js"></script>
   </head>
   <body>
 		<div id="wayd" class="wayd">
@@ -40,10 +42,21 @@
 				<div class="col-md-4">
 					<!-- panel for the login/signup content -->
 					<div id="loginContent">
+						<img id="wavingMan" src="img/waving_man.png" height="400px" style="z-index:-1;position: absolute; left: -19px; top: -82px">
+						<div class="eye" style="display:none; width:20px; height:20px; left:-142px; top:56px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
+						</div>
+						<div class="eye" style="display:none; width:20px; height:20px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
+						</div>
+						<!--
+						<div style="width:14px; height:14px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:7px;background-color:white;">
+						<div class="pupil" style="display:none;width:10px; height:10px; left:-142px; top:56px; border-radius:5px; background-color:blue; position:absolute;"></div>
+						<div class="pupil" style="display:none;width:10px; height:10px; left:-115px; top:40px; border-radius:5px; background-color:blue; position:absolute;"></div>
+						-->
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<form class="loginForm">
-								<!-- should put error somewhere else... I'll leave it here for now -->
 									<img src="img/user_icon.png" height="120px"><br>
 									<div class="error" style="display:none"></div><br>
 									<div class="row">
@@ -67,22 +80,62 @@
 										</div>
 										<div class="col-md-2"></div>
 									</div>
-								</form>
+								</form>							
 								<form class="signupForm" style="display:none;">
-									<h2>Sign Up</h2>
-									<div class="error" style="display:none"></div>
-									<input type="text" id="signupUsername" placeholder="Username" /><br>
-									<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
-									<button>Sign Up</button>
+									<img src="img/user_icon.png" height="120px"><br>
+									<div class="error" style="display:none;"></div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="text" id="signupUsername" class="form-control form-control-purple input-lg" placeholder="Username">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="password" id="signupPassword" class="form-control form-control-purple input-lg" placeholder="Create a Password">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<button class="btn btn-block input-lg">Sign Up</button>
+										</div>
+										<div class="col-md-2"></div>
+									</div>
 								</form>
 							</div>				
 						</div>
-						<h2 id="signupText">Don't have an account? <a id="signupLink" href="javascript:;">Sign up</a></h2>
+						<h2 id="signupText">Don't have an account? <a id="signupLink" href="#">Sign up</a></h2>
+						<h2 id="loginText" style="display:none;">Have an account? <a id="loginLink" href="#">Log in</a></h2>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
-			
+			<script>
+				$("#signupLink").click(function(){
+					$(".loginForm").hide();
+					$("#signupText").hide();
+					$(".signupForm").show();
+					$("#loginText").show();
+				});
+				$("#loginLink").click(function(){
+					$(".loginForm").show();
+					$("#signupText").show();
+					$(".signupForm").hide();
+					$("#loginText").hide();
+				});
+				$("#loginUsername, #signupUsername").click(function(){
+					$("#wavingMan").animate({left: '-250px'}, 3000, function() {
+						$(".eye").show();
+						$(".pupil").show();
+						$(".pupil").jqEye({radius:5});
+					});					
+				});
+				
+			</script>
 		</script>
 
     <script type="text/template" id="QUIZTemplate">

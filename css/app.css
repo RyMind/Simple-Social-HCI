@@ -71,7 +71,7 @@ header {
   color: white;
 }
 
-#loginContent #signupText {
+#signupText, #loginText {
   color:white;
 }
 
@@ -96,4 +96,8 @@ header {
   position:relative;
   margin-left:630px;
   margin-top:-40px;
+}
+
+.signupForm h2, .loginForm h2 {
+  color: purple;
 }
