@@ -42,11 +42,13 @@
 				<div class="col-md-4">
 					<!-- panel for the login/signup content -->
 					<div id="loginContent">
+						<img id="creepyDialog" src="img/dialog.png" height="70px" width="400px" style="display:none;position:absolute; left:-300px; top:-80px;">
+						<p id="creepyText" style="display:none;position:absolute; left:-250px; top:-30px;font-size:130%;">Hi :)</p>
 						<img id="wavingMan" src="img/waving_man.png" height="400px" style="z-index:-1;position: absolute; left: -19px; top: -82px">
-						<div class="eye" style="display:none; width:20px; height:20px; left:-142px; top:56px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+						<div class="creepy" style="display:none; width:20px; height:20px; left:-142px; top:56px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
 							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
 						</div>
-						<div class="eye" style="display:none; width:20px; height:20px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+						<div class="creepy" style="display:none; width:20px; height:20px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
 							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
 						</div>
 						<!--
@@ -129,10 +131,14 @@
 				});
 				$("#loginUsername, #signupUsername").click(function(){
 					$("#wavingMan").animate({left: '-250px'}, 3000, function() {
-						$(".eye").show();
-						$(".pupil").show();
-						$(".pupil").jqEye({radius:5});
+						$(".creepy").show();
+						$("#creepyDialog").show();
+						$("#creepyText").show();
+						$(".pupil").jqEye({radius:5});						
 					});					
+				});
+				$("#loginPassword, #signupPassword").click(function(){
+					$("#creepyText").html("I'm watching you, <b>" + $("#loginUsername").val() + "</b>");
 				});
 				
 			</script>
