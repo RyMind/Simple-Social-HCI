@@ -1,4 +1,19 @@
 $(function() {
+  // Functions for other things
+  var getRGB(rgb, last5) {
+    if (!last5) last5 = [];
+    var colors = ["133,137,254","255,128,169","255,220,128","114,215,247","37,228,148",
+      "255,156,99","83,139,227","255,99,106","0,212,229","233,145,219",
+      "201,244,126","255,141,221","198,146,253","0,241,189"];
+    var random = Math.floor(Math.random() * colors.length);
+    while (last5.indexOf(random) != -1)
+      random = Math.floor(Math.random() * colors.length);
+    last5.push(random);
+    if (last5.length > 5) last5.shift();
+    return colors[random].split(','), last5;
+  }
+
+  // Functions for handling PARSE / PARSE Objects
   Parse.$ = jQuery;
   // Initialize Parse with your Parse application javascript keys
   Parse.initialize("hg5QsPk8Lmrc3jc1wzEbCWYt2BQS0IubRi0KgnF3", "7L7PkSedRzQzAWlq5MoyoE4OeDz33K9qeDGw9fGo");
@@ -148,31 +163,30 @@ $(function() {
       this.curR = 0;
       this.choices = [];
       this.questions = [
-	"Telephoning in public.", 
-	"Participating in small groups.",
-	"Eating in public places.",
-	"Drinking with others in public places.",
-	"Talking to people in authority.",
-	"Acting, performing or giving a talk in front of an audience.",
-	"Going to a party.",
-	"Working while being observed.",
-	"Writing while being observed.",
-	"Calling someone you don’t know very well.",
-	"Talking with people you don’t know very well.",
-	"Meeting strangers.",
-	"Urinating in a public bathroom.",
-	"Entering a room when others are already seated.",
-	"Being the center of attention.",
-	"Speaking up at a meeting.",
-	"Taking a test.",
-	"Expressing a disagreement or disapproval to people you don’t know very well.",
-	"Looking at people you don’t know very well in the eyes.",
-	"Giving a report to a group.",
-	"Trying to pick up someone.",
-	"Returning goods to a store.",
-	"Giving a party.",
-	"Resisting a high pressure salesperson."
-
+      	"Telephoning in public.", 
+      	"Participating in small groups.",
+      	"Eating in public places.",
+      	"Drinking with others in public places.",
+      	"Talking to people in authority.",
+      	"Acting, performing or giving a talk in front of an audience.",
+      	"Going to a party.",
+      	"Working while being observed.",
+      	"Writing while being observed.",
+      	"Calling someone you don’t know very well.",
+      	"Talking with people you don’t know very well.",
+      	"Meeting strangers.",
+      	"Urinating in a public bathroom.",
+      	"Entering a room when others are already seated.",
+      	"Being the center of attention.",
+      	"Speaking up at a meeting.",
+      	"Taking a test.",
+      	"Expressing a disagreement or disapproval to people you don’t know very well.",
+      	"Looking at people you don’t know very well in the eyes.",
+      	"Giving a report to a group.",
+      	"Trying to pick up someone.",
+      	"Returning goods to a store.",
+      	"Giving a party.",
+      	"Resisting a high pressure salesperson."
       ];
       this.responseSets = [
         ["How anxious or fearful do you feel in this situation?",["None","Mild","Moderate","Severe"]], 

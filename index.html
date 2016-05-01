@@ -10,9 +10,9 @@
     <title>Simple Social</title>
 
     <!-- styling/etc -->
-    <link rel="stylesheet" type="text/css" href="./css/app.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/app.css">
 
     <!-- dependencies -->
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -31,29 +31,28 @@
 
     <!-- Templates -->
 		<script type="text/template" id="loginTemplate">
-			<div class="row" id="frontPageContent">
-				<img src="./img/guy-waving.jpg" class="col-md-2" id="leftImage">
-				<div class="login col-md-4 panel panel-default">
+			<div class="row login" id="frontPageContent">
+				<div class="panel panel-default">
 					<div class="panel-body">
-						<header id="header" class="row"><h1>Simple Social<br><small>Sign up for cool updates</small></h1></header>
-						<form class="loginForm row">
-							<h2>Log In</h2>
-							<div class="error" style="display:none"></div>
-							<input type="text" id="loginUsername" placeholder="Username" /><br>
-							<input type="password" id="loginPassword" placeholder="Password" /><br>
-							<button>Log In</button>
-						</form>
-						<p class="row">----- OR -----</p>
-						<form class="signupForm row">
-							<h2>Sign Up</h2>
-							<div class="error" style="display:none"></div>
-							<input type="text" id="signupUsername" placeholder="Username" /><br>
-							<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
-							<button>Sign Up</button>
-						</form>
-					</div>
+						<header id="header" class="row"><h1>Simple Social<br></h1></header>
+            <div class="row">
+  						<form class="loginForm col-md-6">
+  							<h2>Log In</h2>
+  							<div class="error" style="display:none"></div>
+  							<input type="text" id="loginUsername" placeholder="Username" /><br>
+  							<input type="password" id="loginPassword" placeholder="Password" /><br>
+  							<button>Log In</button>
+  						</form>
+  						<form class="signupForm col-md-6">
+  							<h2>Sign Up</h2>
+  							<div class="error" style="display:none"></div>
+  							<input type="text" id="signupUsername" placeholder="Username" /><br>
+  							<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
+  							<button>Sign Up</button>
+  						</form>
+  					</div>
+          </div>
 				</div>
-				<img id="rightImage" class="col-md-6" src="./img/happy-man.png" height="464px">			
 			</div>
 		</script>
 

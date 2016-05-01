@@ -26,6 +26,10 @@ panel{
 
 .login {
 	text-align: center;
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20%;
 }
 
 #frontPageContent {
@@ -41,4 +45,8 @@ panel{
 #leftImage{
 	position: relative; /* Declared position allows for location changes */
     left: 15px; /* Moves the image 2px closer to the top of the page */
+}
+
+.loginForm {
+	border-right: 5px #000 solid;
 }
