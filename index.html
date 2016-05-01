@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,14 +8,15 @@
     <title>Simple Social</title>
 
     <!-- styling/etc -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/app.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" >
 
     <!-- dependencies -->
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>		
     <script src="./js/underscore.js"></script>
+		<!-- for eyes -->
+		<script type="text/javascript" src="js/jqeye.min.js"></script>
   </head>
   <body>
 		<div id="wayd" class="wayd">
@@ -31,29 +30,117 @@
 
     <!-- Templates -->
 		<script type="text/template" id="loginTemplate">
-			<div class="row login" id="frontPageContent">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<header id="header" class="row"><h1>Simple Social<br></h1></header>
-            <div class="row">
-  						<form class="loginForm col-md-6">
-  							<h2>Log In</h2>
-  							<div class="error" style="display:none"></div>
-  							<input type="text" id="loginUsername" placeholder="Username" /><br>
-  							<input type="password" id="loginPassword" placeholder="Password" /><br>
-  							<button>Log In</button>
-  						</form>
-  						<form class="signupForm col-md-6">
-  							<h2>Sign Up</h2>
-  							<div class="error" style="display:none"></div>
-  							<input type="text" id="signupUsername" placeholder="Username" /><br>
-  							<input type="password" id="signupPassword" placeholder="Create a Password" /><br>
-  							<button>Sign Up</button>
-  						</form>
-  					</div>
-          </div>
+			<header>Simple Social</header>
+			<div class="row" id="loginRow">
+				<div class="col-md-1"></div>
+				<div class="col-md-5" id="quoteBlock">
+					<img id="leftQuote" src="img/quote-left.png" height="100px">
+					<h1>If it scares you, it might be a good thing to try</h1>
+					<img id="rightQuote" src="img/quote-right.png" height="100px">
 				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<!-- panel for the login/signup content -->
+					<div id="loginContent">
+						<img id="creepyDialog" src="img/dialog.png" height="70px" width="400px" style="display:none;position:absolute; left:-300px; top:-80px;">
+						<p id="creepyText" style="display:none;position:absolute; left:-250px; top:-30px;font-size:130%;">Hi :)</p>
+						<img id="wavingMan" src="img/waving_man.png" height="400px" style="z-index:-1;position: absolute; left: -19px; top: -82px">
+						<div class="creepy" style="display:none; width:20px; height:20px; left:-142px; top:56px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
+						</div>
+						<div class="creepy" style="display:none; width:20px; height:20px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:10px;background-color:white;">
+							<div class="pupil" style="width:8px; height:8px; left:5px; top:4px; border-radius:4px; background-color:black; position:relative;"></div>
+						</div>
+						<!--
+						<div style="width:14px; height:14px; left:-115px; top:40px; position:absolute; border:1px solid black; border-radius:7px;background-color:white;">
+						<div class="pupil" style="display:none;width:10px; height:10px; left:-142px; top:56px; border-radius:5px; background-color:blue; position:absolute;"></div>
+						<div class="pupil" style="display:none;width:10px; height:10px; left:-115px; top:40px; border-radius:5px; background-color:blue; position:absolute;"></div>
+						-->
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form class="loginForm">
+									<img src="img/user_icon.png" height="120px"><br>
+									<div class="error" style="display:none"></div><br>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="text" id="loginUsername" class="form-control form-control-purple input-lg" placeholder="Username">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">									
+											<input type="password" id="loginPassword" class="form-control form-control-purple input-lg" placeholder="Password">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<button class="btn btn-block input-lg">Log In</button>
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+								</form>							
+								<form class="signupForm" style="display:none;">
+									<img src="img/user_icon.png" height="120px"><br>
+									<div class="error" style="display:none;"></div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="text" id="signupUsername" class="form-control form-control-purple input-lg" placeholder="Username">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<input type="password" id="signupPassword" class="form-control form-control-purple input-lg" placeholder="Create a Password">
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-8">
+											<button class="btn btn-block input-lg">Sign Up</button>
+										</div>
+										<div class="col-md-2"></div>
+									</div>
+								</form>
+							</div>				
+						</div>
+						<h2 id="signupText">Don't have an account? <a id="signupLink" href="#">Sign up</a></h2>
+						<h2 id="loginText" style="display:none;">Have an account? <a id="loginLink" href="#">Log in</a></h2>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
 			</div>
+			<script>
+				$("#signupLink").click(function(){
+					$(".loginForm").hide();
+					$("#signupText").hide();
+					$(".signupForm").show();
+					$("#loginText").show();
+				});
+				$("#loginLink").click(function(){
+					$(".loginForm").show();
+					$("#signupText").show();
+					$(".signupForm").hide();
+					$("#loginText").hide();
+				});
+				$("#loginUsername, #signupUsername").click(function(){
+					//$("#wavingMan").animate({left: '-250px'}, 3000);					
+				});
+				$("#loginPassword, #signupPassword").click(function(){
+					/*$(".creepy").show();
+					$("#creepyDialog").show();
+					$("#creepyText").show();
+					$(".pupil").jqEye({radius:5});	
+					$("#creepyText").html("I'm watching you, <b>" + $("#loginUsername").val() + "</b>");*/
+				});
+				
+			</script>
 		</script>
 
     <script type="text/template" id="QUIZTemplate">
@@ -97,6 +184,8 @@
 		</script>
 
 		<!-- app script -->
-    <script src="./js/app.js"></script> 
+    <script src="./js/app.js"></script>
+		<!-- bootstrap's script -->
+		<script src="js/bootstrap.min.js"></script>		
 	</body>
 </html>

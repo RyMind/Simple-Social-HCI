@@ -1,6 +1,6 @@
 $(function() {
   // Functions for other things
-  var getRGB(rgb, last5) {
+  var getRGB = function(rgb, last5) {
     if (!last5) last5 = [];
     var colors = ["133,137,254","255,128,169","255,220,128","114,215,247","37,228,148",
       "255,156,99","83,139,227","255,99,106","0,212,229","233,145,219",

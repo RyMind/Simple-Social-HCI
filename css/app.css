@@ -1,27 +1,28 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto|Pacifico|Indie+Flower);
 
 body {
-	font-family: 'Roboto', sans-serif;
-	
+  font-family: 'Roboto', sans-serif;
+  background-image: url("../img/background.jpg");
+  background-size: cover;  
 }
 
 panel{
-	background-color: lightblue;
+  background-color: lightblue;
 }
 
 .wayd .item {
-	font-size: 17;
-	padding: .25em;
-	height: 2em;
-	line-height: 2em;
-	text-align: center;
-	margin: 2px;
-	border: 1px solid #667;
-	display:inline-block;
+  font-size: 17;
+  padding: .25em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  margin: 2px;
+  border: 1px solid #667;
+  display:inline-block;
 }
 
 .wayd .item.selected {
-	background-color: rgba(51,102,255,.8);
+  background-color: rgba(51,102,255,.8);
 }
 
 .login {
@@ -32,14 +33,16 @@ panel{
 	margin-top: 20%;
 }
 
-#frontPageContent {
-	margin-top: 100px;
+header {
+  font-size: 400%;
+  font-family: 'Pacifico', cursive;
+  margin-left: 30px;
+  margin-top: 30px;
+  color: white;
 }
 
-#rightImage {
-	/*position: relative; /* Declared position allows for location changes */
-    /*top: -200px; /* Moves the image 2px closer to the top of the page */
-	max-width: none;
+#loginRow {
+  margin-top: 20px;
 }
 
 #leftImage{
@@ -49,4 +52,65 @@ panel{
 
 .loginForm {
 	border-right: 5px #000 solid;
+}
+
+#loginContent { 
+  text-align: center;
+}
+
+#loginContent img {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#loginContent input {
+  margin-bottom: 20px;
+  border-color: purple;
+}
+
+#loginContent input:focus {   
+  border-color: rgba(255, 0, 255, 0.8);
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+}
+
+#loginContent a {   
+  color: skyblue;
+}
+
+#loginContent .btn {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color: purple;
+  color: white;
+}
+
+#signupText, #loginText {
+  color:white;
+}
+
+#quoteBlock h1{
+  position: relative;
+  margin-top: -30px;
+  color:white;
+  font-family: 'Indie Flower', cursive;
+  font-size: 500%;
+  text-align:center;
+  background-color: rgba(0,0,0,0.1);
+}
+
+#leftQuote {
+  position:relative;
+  margin-left:-80px;
+  margin-top:50px;
+  z-index:2;
+}
+
+#rightQuote {
+  position:relative;
+  margin-left:630px;
+  margin-top:-40px;
+}
+
+.signupForm h2, .loginForm h2 {
+  color: purple;
 }
