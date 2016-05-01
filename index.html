@@ -145,16 +145,16 @@
 
     <script type="text/template" id="QUIZTemplate">
       <div id="quizContainer">
-        <div id="quizQuestion">
-          <%= questions[curQ] %>
+        <div id="quizQuestion" class="row">
+         <h1> <%= questions[curQ] %> </h1>
         </div>
         <div id="quizResponses">
-          <div id="responseQuestion">
+          <div id="responseQuestion" class="row">
             <%= responses[curR][0] %>
           </div>
-          <div id="responseItems">
+          <div id="responseItems" class="row">
             <% for (item in responses[curR][1]) { %>
-              <div class="response" data-value="<%= item %>"><%= responses[curR][1][item] %></div>
+              <div class="response col-md-3" data-value="<%= item %>"><%= responses[curR][1][item] %></div>
             <% } %>
           </div>
         </div>
@@ -181,6 +181,8 @@
 		  <label>Journal Entry:<br><textarea id="blurb" class="blurb"></textarea></label><br>
 		  <button type="submit" class="submit">Submit</button>
 			<br>
+      <button type="submit" class="takeQuiz">Retake Liebowitz Test</button>
+      <br>
 		</script>
 
 		<!-- app script -->

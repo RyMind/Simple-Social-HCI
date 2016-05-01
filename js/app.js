@@ -1,5 +1,4 @@
 // TODO: Style Quiz View
-// TODO: Add "Take Quiz" to main view
 // col-md-3 for options, circular?
 // selected == filled, invert font
 // TODO: Add "Your Score Is"
@@ -97,7 +96,12 @@ $(function() {
 			}, error : function(obj, error) {} });
 		}
   });
-
+  $("#hayd").on("click", ".takeQuiz", function() {
+    new QuizView;
+    $("#hayd").html("");
+    delete this;
+    this.undelegateEvents();
+  });
 	var LogInView = Parse.View.extend({
     events: {
       "submit form.loginForm": "logIn",
