@@ -1,3 +1,12 @@
+// TODO: Style Quiz View
+// TODO: Add "Take Quiz" to main view
+// col-md-3 for options, circular?
+// selected == filled, invert font
+// TODO: Add "Your Score Is"
+// TODO: Style Main View
+// TODO: Add graphs to main view
+
+
 $(function() {
   // Functions for other things
   var getRGB = function(rgb, last5) {
