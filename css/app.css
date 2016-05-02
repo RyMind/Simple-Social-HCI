@@ -9,6 +9,9 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  transition: background 0.5s ease;
+  transition: background-color 0.5s ease;
+
 }
 
 panel{
@@ -117,4 +120,60 @@ header {
 
 .signupForm h2, .loginForm h2 {
   color: purple;
+}
+
+.quizContainer {
+	position: absolute;
+	left: 10%;
+	width: 80%;
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.quizContainer h1 {
+	font-size: 5vw;
+	color:white;
+}
+.quizContainer h2 {
+	font-size: 2vw;
+}
+
+.responseBody {
+	border-radius: 50%;
+  transition: background 0.65s ease;
+	width: 80%;
+	height: 0;
+	padding-top: 40%;
+	padding-bottom: 40%;
+	background: rgba(255,255,255,.75);
+	color: black;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.responseBody h4 {
+	font-size: 2vw;
+}
+
+.selected {
+  transition: background 0.65s ease;
+	background: rgba(0,0,0,.75);
+	color: white;
+}
+
+.nextQ {
+	margin-top: 2%;
+	font-size: 2vw;
+	background: rgba(0,0,0,.75);
+	border-radius: 10%;
+	opacity: .2;
+	color: white;
+	width: 80%;
+	margin-left: 80%;
+}
+
+.readyUp {
+	opacity: 1;
 }

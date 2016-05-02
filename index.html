@@ -144,21 +144,28 @@
 		</script>
 
     <script type="text/template" id="QUIZTemplate">
-      <div id="quizContainer">
+      <div id="quizContainer" class="quizContainer">
         <div id="quizQuestion" class="row">
          <h1> <%= questions[curQ] %> </h1>
         </div>
         <div id="quizResponses">
           <div id="responseQuestion" class="row">
-            <%= responses[curR][0] %>
+            <h2><%= responses[curR][0] %><h2>
           </div>
           <div id="responseItems" class="row">
             <% for (item in responses[curR][1]) { %>
-              <div class="response col-md-3" data-value="<%= item %>"><%= responses[curR][1][item] %></div>
+              <div class="response col-md-3" data-value="<%= item %>">
+                <div class="responseBody">
+                  <h4><%= responses[curR][1][item] %></h4>
+                </div>
+              </div>
             <% } %>
           </div>
         </div>
-        <div id="nextQ" class="nextQ">Next Question -></div>
+        <div class="row">
+        <div class="col-md-10"></div>
+        <div id="nextQ" class="col-md-2 nextQ">Next Question &#8594;</div>
+        </div>
       </div>
     </script>
 

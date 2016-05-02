@@ -8,7 +8,7 @@
 
 $(function() {
   // Functions for other things
-  var getRGB = function(rgb, last5) {
+  var getRGB = function(last5) {
     if (!last5) last5 = [];
     var colors = ["133,137,254","255,128,169","255,220,128","114,215,247","37,228,148",
       "255,156,99","83,139,227","255,99,106","0,212,229","233,145,219",
@@ -18,7 +18,7 @@ $(function() {
       random = Math.floor(Math.random() * colors.length);
     last5.push(random);
     if (last5.length > 5) last5.shift();
-    return colors[random].split(','), last5;
+    return [colors[random].split(','), last5];
   }
 
   // Functions for handling PARSE / PARSE Objects
@@ -100,7 +100,6 @@ $(function() {
     new QuizView;
     $("#hayd").html("");
     delete this;
-    this.undelegateEvents();
   });
 	var LogInView = Parse.View.extend({
     events: {
@@ -167,7 +166,7 @@ $(function() {
     el: $("#wayd"),
     events: {
       "click .nextQ" : "nextQ",
-      "click .response" : "selectResp"
+      "click .responseBody" : "selectResp"
     }, 
     initialize : function() {
       console.log("Init Quiz");
@@ -206,17 +205,17 @@ $(function() {
         ["How often do you avoid this situation?",["Never","Occasionally","Often","Usually"]]
       ];
       _.bindAll(this,'render','nextQ','selectResp');
-
+      this.last5 = [];
       this.render();
     },
     nextQ : function(e) {
-      if ($(".response.selected").length == 1) {
+      if ($(".responseBody.selected").length == 1) {
         if (this.curR == this.responseSets.length-1) {
           this.curQ += 1;
           this.curR = 0;
-          this.choices.push(parseInt($(".response.selected")[0].getAttribute("data-value")));
+          this.choices.push(parseInt($(".responseBody.selected")[0].getAttribute("data-value")));
           this.render();
-
+          $('.meter span').width((100*(this.curQ*2 + this.curR))/(this.questions.length*2) + "%");
         } else if (this.curQ == this.questions.length-1) { 
           this.undelegateEvents();
           var obj = new QUIZ();
@@ -226,6 +225,7 @@ $(function() {
           obj.set("choices", this.choices);
           obj.set("result", this.choices.reduce(function(f, s) { return f + s; }, 0));
           obj.save(null,{ success : function(obj) {
+            document.body.style.background = 'url("./img/background.jpg") no-repeat center center fixed';
             new WAYDAppView;
           }});
 
@@ -238,12 +238,22 @@ $(function() {
       }
     },
     selectResp : function(e) {
-      $(".response.selected").removeClass("selected");
-      $(e.target).addClass("selected");
+      if ($(e.target).hasClass('responseBody')) {
+        $(".responseBody.selected").removeClass("selected");
+        $(e.target).addClass("selected");
+        $("#nextQ").addClass("readyUp");
+
+      } else {
+        $(e.target).parent().click();
+      }
     },
     render : function() {
       if (Parse.User.current()) {
         var user = Parse.User.current();
+        var rgb = getRGB(this.last5);
+        this.last5 = rgb[1];
+        document.body.style.background = "rgb(" + rgb[0][0] + "," + rgb[0][1] + "," + rgb[0][2] + ")";
+ 
         this.$el.html(_.template($("#QUIZTemplate").html())({questions : this.questions, curQ : this.curQ, curR : this.curR, responses : this.responseSets}));
         // $("#categories").html(innards);
         this.delegateEvents();                
@@ -251,6 +261,9 @@ $(function() {
         self.undelegateEvents();
         new LogInView();
       }     
+      $('.responseBody').click(function (evt) {
+          // Your code here
+      });
     }
   });
   var WAYDAppView = Parse.View.extend({
