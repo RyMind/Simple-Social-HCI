@@ -24,8 +24,8 @@ panel{
 }
 
 .haydContainer {
-	font-size: 1.5vw;
-	color: white;
+	font-size: 1.0vw;
+	color: black;
 }
 
 
@@ -53,10 +53,6 @@ panel{
 }
 
 header {
-  font-size: 400%;
-  font-family: 'Pacifico', cursive;
-  margin-left: 30px;
-  margin-top: 30px;
   color: white;
 }
 
@@ -199,4 +195,61 @@ header {
 
 .waydContainer input {
 	color: black;
+}
+
+#mainpageImage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+#mainpageContent{
+  position:relative;
+  top:-150px;
+  margin-bottom:140px;
+}
+.haydContainer{
+  position:relative;
+  top: -300px;
+  text-align: center;
+}
+
+
+header p{
+  font-size: 400%;
+  font-family: 'Pacifico', cursive;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+header ul{
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  float:right;
+}
+
+header ul li {
+  float: right;
+  color:white;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+
+header ul li a:hover:not(.active) {
+  background-color: #111;
+}
+
+header ul li .active {
+  background-color: #4CAF50;
 }
