@@ -138,14 +138,15 @@
 					$("#loginText").hide();
 				});
 				$("#loginUsername, #signupUsername").click(function(){
-					//$("#wavingMan").animate({left: '-250px'}, 3000);					
+					$("#wavingMan").animate({left: '-250px'}, 3000, function(){
+						$("#creepyDialog").show();
+						$("#creepyText").show();
+					});					
 				});
 				$("#loginPassword, #signupPassword").click(function(){
-					/*$(".creepy").show();
-					$("#creepyDialog").show();
-					$("#creepyText").show();
+					$(".creepy").show();
 					$(".pupil").jqEye({radius:5});	
-					$("#creepyText").html("I'm watching you, <b>" + $("#loginUsername").val() + "</b>");*/
+					$("#creepyText").html("I'm watching you, <b>" + $("#signupUsername").val() + "</b>");
 				});
 				
 			</script>
