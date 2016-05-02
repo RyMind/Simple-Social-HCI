@@ -18,6 +18,17 @@ panel{
   background-color: lightblue;
 }
 
+.waydContainer {
+	font-size: 1.5vw;
+	color: white;
+}
+
+.haydContainer {
+	font-size: 1.5vw;
+	color: white;
+}
+
+
 .wayd .item {
   font-size: 17;
   padding: .25em;
@@ -176,4 +187,16 @@ header {
 
 .readyUp {
 	opacity: 1;
+}
+
+.haydContainer button {
+	color: black;
+}
+
+.haydContainer input {
+	color: black;
+}
+
+.waydContainer input {
+	color: black;
 }

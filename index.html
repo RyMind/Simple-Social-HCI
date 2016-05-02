@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="js/jqeye.min.js"></script>
   </head>
   <body>
+
 		<div id="wayd" class="wayd">
 		</div>
 
@@ -170,19 +171,29 @@
     </script>
 
     <script type="text/template" id="WAYDTemplate">
+      <br><br>
+      <div class="col-md-6 waydContainer">
       <div id="userInfo">
         Signed in as <%= Parse.User.current().escape("username") %> (<a href="#" class="logOut">Log out</a>)
       </div><br>
+      <div class="row">
       <p> What are you doing? </p>
+      </div>
+      <div class="row">
       <div id="categories">
       </div>
-      <br>
+      </div>
+      <div class="row">
 			<div id="add">
 				<label> Add category: <input id="addWAYD" type="text" placeholder="Something you do..."></label> 
 			</div>
+      </div>
+      </div>
+      </div>
     </script>
 
     <script type="text/template" id="HAYDTemplate">
+      <div class="col-md-6 haydContainer">
       <p> How are you doing? </p>
     	<label>Mood:<input id="rating" class="rating" type="number"></label><br>
 		  <label>Journal Entry:<br><textarea id="blurb" class="blurb"></textarea></label><br>
@@ -190,6 +201,7 @@
 			<br>
       <button type="submit" class="takeQuiz">Retake Liebowitz Test</button>
       <br>
+      </div>
 		</script>
 
 		<!-- app script -->
